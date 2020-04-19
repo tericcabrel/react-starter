@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "email_token": {
+      "type": "string",
+      "description": "User email token."
+    },
+    "password": {
+      "type": "string",
+      "description": "The new password of the user."
+    }
+  },
+  "required": ["email_token", "password"]
+}

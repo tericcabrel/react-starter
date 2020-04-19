@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+   "id": "http://localhost/the-news/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "uid" : {
+      "type": "string",
+      "description": "User unique ID"
+    },
+    "password": {
+      "type": "string",
+      "description": "The current password of the user"
+    },
+    "new_password": {
+      "type": "string",
+      "description": "The new password of the user"
+    }
+  }
+}

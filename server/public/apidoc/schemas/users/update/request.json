@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+   "id": "http://localhost/the-news/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "name" : {
+      "type": "string",
+      "description": "User name"
+    },
+    "username": {
+      "type": "string",
+      "description": "User unique username"
+    }
+  }
+}

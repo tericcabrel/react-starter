@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "b5fb1f85-baf2-44a8-8304-bb06aa942693",
+		"name": "RestBoilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"teco\",\n\t\"name\": \"Teco Geek\",\n\t\"email\": \"teco@geek.com\",\n\t\"password\": \"qwerty\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account confirm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"$2a$08$oy6du6mj6VApHwjYm/fn6eeQsm2iZg2wB0T/DNr22PcYXK9V2zcgW\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/account/confirm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"account",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"teco@geek.com\",\n\t\"password\": \"qwerty\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"tericcabrel@yahoo.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/password/forgot",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"password",
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"reset_token\": \"$2a$08$Mdzq3UUOKB/VF3EO7wgw/eyRgZy6wY4LwlD7N29g637rzQWaFvgfi\",\n\t\"password\": \"azerty\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/password/reset",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/5cee5e05ecee2e1f995347bf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"5cee5e05ecee2e1f995347bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get authenticated user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update authenticated user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uid\": \"5cee5e05ecee2e1f995347bf\",\n\t\"name\": \"Teco Gill\",\n\t\"username\": \"tico\",\n\t\"gender\": \"M\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update auth user's password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uid\": \"5cee5e05ecee2e1f995347bf\",\n\t\"password\": \"qwerty\",\n\t\"new_password\": \"azerty\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/5cee5e05ecee2e1f995347bf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"5cee5e05ecee2e1f995347bf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Test Application\",\n\t\"description\": \"QA testing on the whole application\",\n\t\"status\": \"Pending\",\n\t\"date\": \"2019-05-30 09:30:00\",\n\t\"is_important\": true,\n\t\"user\": \"5cee861d04d9f4214dc8dce6\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"Done\",\n\t\"is_important\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/5cee8eb78e5d7523f650e94f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"5cee8eb78e5d7523f650e94f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/tasks/5cee8eb78e5d7523f650e94f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"5cee8eb78e5d7523f650e94f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/5cee8eb78e5d7523f650e94f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"5cee8eb78e5d7523f650e94f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjZWU1ZTA1ZWNlZTJlMWY5OTUzNDdiZiIsImlhdCI6MTU1OTEyNjIzNCwiZXhwIjoxNTU5MjEyNjM0fQ.EgoSjZW1Umao55e4do-uRNoMpwqAUrdAdniJ8ayrlOM",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-access-token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "19a8f95c-7365-4437-8430-5ec17aa34b98",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7a64ddfe-55f4-4bad-aa01-c21394300e4e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

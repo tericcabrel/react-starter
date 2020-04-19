@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "description": "JWT Access token for secured requests."
+    },
+    "expiresIn": {
+      "type": "number",
+      "description": "Time to live of the token in second"
+    }
+  },
+  "required": ["token", "expiresIn"]
+}

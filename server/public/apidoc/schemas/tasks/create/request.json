@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/the-news/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Task title"
+    },
+    "description" : {
+      "type": "string",
+      "description": "Task description"
+    },
+     "status" : {
+      "type": "string",
+       "description": "Task status. Possible value: `Pending`, `Completed`, ``"
+    },
+    "date": {
+      "type": "string",
+      "description": "Time to execute the task"
+    },
+    "is_important": {
+      "type": "boolean",
+      "description": "Indicate the task importance"
+    },
+    "user": {
+      "type": "string",
+      "description": "Id of the creator of the task"
+    }
+  },
+  "required": [ "title", "description", "status", "date", "is_important", "user"]
+}

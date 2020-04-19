@@ -1,0 +1,20 @@
+[
+    {
+      "_id": "5d31d9d0fd4fc002e68d8f93",
+      "name" : "John DOE",
+      "username" : "jndoe",
+      "email" : "user@example.com",
+      "gender": "M",
+      "confirmed": true,
+      "avatar": "https://api.starter.com/uploads/1557234445-user.png"
+    },
+    {
+      "_id": "5caa22a898eb5b14af3e93ec",
+      "name" : "Alice BOB",
+      "username" : "alibob",
+      "email" : "alibob@example.com",
+      "gender": "F",
+      "confirmed": true,
+      "avatar": "https://api.starter.com/uploads/1557398373-user.png"
+    }
+]

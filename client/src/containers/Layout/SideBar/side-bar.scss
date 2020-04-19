@@ -1,0 +1,84 @@
+.sidebar-container {
+  width: 240px;
+  background-color: #222d32;
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+  .sidebar-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    // border-bottom: solid 1px #ddd;
+  }
+  .sidebar-user-info {
+    padding: 10px;
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .user-status {
+      font-size: 13px;
+    }
+  }
+  .navigation-title {
+    background-color: #2c3b41;
+    color: #ffffff;
+    height: 35px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+  .menu-navigation {
+    .main-menu {
+      .main-menu-item {
+        .nav-link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: #ffffff;
+          width: 100%;
+          cursor: pointer;
+          position: relative;
+          .nav-label {
+            font-size: 14px;
+            margin-left: .5rem;
+          }
+        }
+        .sub-menu {
+          display: none;
+          .main-menu-item {
+            padding-left: 20px;
+          }
+        }
+        .sub-menu.hidden {
+          display: none;
+          transition: 1s;
+        }
+        .sub-menu.view {
+          display: block;
+          transition: 1s;
+        }
+        .nav-caret {
+          position: absolute;
+          right: 15px;
+        }
+        .nav-caret.nav-caret-down {
+          transform: rotate(90deg);
+          transition: .5s;
+        }
+        .nav-caret.nav-caret-right {
+          transition: .5s;
+        }
+      }
+      .main-menu-item.active > a {
+        background-color: #2c3b41;
+      }
+    }
+  }
+}

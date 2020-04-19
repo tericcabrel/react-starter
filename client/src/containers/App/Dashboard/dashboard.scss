@@ -1,0 +1,17 @@
+.dashboard-content {
+  width: 100%;
+  .dashboard-header {
+    padding-bottom: 15px;
+    width: 100%;
+    form {
+      #countrySelect {
+        width: 300px;
+      }
+    }
+  }
+  .dashboard-body {
+    padding: 15px;
+    background-color: #ffffff;
+    min-height: 500px;
+  }
+}

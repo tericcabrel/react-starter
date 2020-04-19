@@ -1,0 +1,17 @@
+.global-error {
+  .modal-general-error {
+    h3 {
+      font-weight: bold;
+    }
+    .ant-modal-content {
+      background-color: #fff !important;
+    }
+    ul{
+      padding-left: 0;
+      li {
+        text-align: center;
+        color: red;
+      }
+    }
+  }
+}

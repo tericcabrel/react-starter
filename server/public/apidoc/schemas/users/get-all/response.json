@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+   "id": "http://localhost/api-doc/schemas/",
+    "type": "array",
+    "description": "The list of users.",
+    "items": {
+      "type": "object",
+      "properties": {
+         "_id" : {
+          "type": "string",
+          "description": "User id"
+        },
+         "name": {
+          "type": "string",
+          "description": "User name"
+        },
+        "username" : {
+          "type": "string",
+          "description": "User name"
+        },
+         "email" : {
+          "type": "string",
+          "description": "User email address",
+          "format": "email"
+        },
+        "gender": {
+          "type": "string",
+          "description": "User gender"
+        },
+        "confirmed": {
+          "type": "boolean",
+          "description": "Indciates if account is confirmed or not"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "Path of the picture the user"
+        }
+      },
+     "required": [ "_id", "name", "username", "email", "gender", "confirmed", "avatar"]
+    }
+    
+}

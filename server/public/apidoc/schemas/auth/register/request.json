@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/the-news/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "User's email address",
+      "format": "email"
+    },
+    "name" : {
+      "type": "string",
+      "description": "User's full name"
+    },
+     "username" : {
+      "type": "string",
+      "description": "User's unique username"
+    },
+    "password": {
+      "type": "string",
+      "description": "User's password",
+      "minLength": 5
+    }
+  },
+  "required": [ "email", "name", "username","password"]
+}

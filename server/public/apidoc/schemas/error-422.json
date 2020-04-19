@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/api-doc/schemas/",
+  "type": "object",
+  "description": "The list of errors",
+  "properties": {
+    "errors": {
+      "type": "object",
+      "properties": {
+        "*": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": ["errors"]
+}

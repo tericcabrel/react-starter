@@ -1,0 +1,19 @@
+.table-country-info {
+  tr:first-child {
+    td {
+      border-top: none;
+    }
+  }
+
+  td.country-column-item {
+    .content {
+      display: flex;
+      justify-content: space-between;
+    }
+    img {
+      width: 64px;
+      height: 32px;
+    }
+  }
+}
+

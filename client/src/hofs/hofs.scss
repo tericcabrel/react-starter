@@ -1,0 +1,33 @@
+#root {
+  background-size: cover;
+  background: url("../assets/images/bg-app.jpg") no-repeat;
+}
+.auth-container {
+  height: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  .auth-content {
+    height: 98%;
+  }
+  .app-auth {
+    height: 100%;
+    .app-auth-container {
+      height: 100%;
+    }
+    .app-auth-content {
+      background-color: #fff;
+      position: relative;
+      .auth-spinner {
+        position: absolute;
+        top: 36px;
+        right: 35px;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+}
+
+.app-container {
+
+}

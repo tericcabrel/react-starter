@@ -1,0 +1,34 @@
+.app-header {
+  padding: 0 1rem;
+  height: 50px;
+  width: calc(100% - 240px);
+  left: 240px;
+  .navbar-brand {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+  .user-profile {
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+    .user-name {
+      display: inline-block;
+      margin-top: 5px;
+    }
+    .dropdown-menu {
+      border-radius: 0;
+      border-color: #fff;
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        .user-header-icon {
+          margin-right: 15px;
+        }
+      }
+    }
+
+  }
+}

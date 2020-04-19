@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+   "id": "http://localhost/api-doc/schemas/",
+    "type": "array",
+    "description": "The list of users.",
+    "items": {
+      "type": "object",
+      "properties": {
+         "user_id" : {
+          "type": "string",
+          "description": "User id"
+        },
+         "name": {
+          "type": "string",
+          "description": "User name"
+        },
+        "username" : {
+          "type": "string",
+          "description": "User name"
+        },
+         "email" : {
+          "type": "string",
+          "description": "User email address",
+          "format": "email"
+        }
+      },
+     "required": [ "user_id","name", "username", "email"]
+    }
+    
+}

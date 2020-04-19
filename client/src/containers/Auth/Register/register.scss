@@ -1,0 +1,49 @@
+.app-register {
+  .app-register-content {
+    min-height: 475px;
+    display: flex;
+    .first-side {
+      width: 40%;
+      background-color: deepskyblue;
+      color: #fff;
+      min-height: 50px;
+      padding: 15px;
+      .first-side-section-one {
+        h2 {
+          margin-bottom: 0;
+        }
+      }
+      .first-side-section-two {
+        ul {
+          margin-left: 0;
+          list-style: none;
+          font-size: .8rem;
+          padding: 0 auto;
+
+          li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 5px;
+            svg {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+    .second-side {
+      padding: 30px;
+      overflow-y: auto;
+    }
+  }
+  .app-register-extra {
+    display: flex;
+    justify-content: flex-end;
+    a {
+      font-size: .9rem;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

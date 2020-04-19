@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app:
+    container_name: mern-starter
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./public:/home/www/public
+    env_file: ./server.env
+    ports:
+      - "7430:7430"
+    links:
+      - mongodb
+    networks:
+      - mernnetwork
+  mongodb:
+    container_name: mern-starter-db
+    image: mongo
+    volumes:
+      - ${ENV_FOLDER}/dist/db:/data/db
+    ports:
+      - "27000:27017"
+    env_file: ./mongo.env
+    networks:
+      - mernnetwork
+networks:
+  mernnetwork:
+    driver: bridge

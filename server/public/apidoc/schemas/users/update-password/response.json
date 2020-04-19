@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/the-news/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "User id"
+    },
+    "email": {
+      "type": "string",
+      "description": "User email address",
+      "format": "email"
+    },
+    "name" : {
+      "type": "string",
+      "description": "User name"
+    },
+    "username" : {
+      "type": "string",
+      "description": "User name"
+    },
+    "gender": {
+      "type": "string",
+      "description": "User gender"
+    },
+    "confirmed": {
+      "type": "boolean",
+      "description": "Indciates if account is confirmed or not"
+    },
+    "avatar": {
+      "type": "null",
+      "description": "Path of the picture the user"
+     }
+  },
+  "required": [ "_id", "email", "name", "username", "gender", "confirmed", "avatar"]
+}

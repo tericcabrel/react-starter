@@ -1,0 +1,384 @@
+#%RAML 1.0
+title: NodeRestApi
+baseUri: http://localhost:7010/{version}
+version: v1
+
+traits:
+  paged: !include traits/paged.yml
+resourceTypes:
+  writer:
+    description:
+    post:
+      description: Execute the action.
+      responses:
+        200:
+          description: The request was successfully completed.
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+  reader_writer:
+    description:
+    get:
+      description: |
+        Retrieve a list of <<resourcePathName>>.
+      responses:
+        200:
+          description: |
+            List of <<resourcePathName>>.
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+    post:
+      description: |
+        Create a new <<resourcePathName | !singularize>> in the collection.
+      responses:
+        201:
+          description: |
+            A new <<resourcePathName | !singularize>> has been created in the collection.
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+  reader_updater:
+    description: 
+    securedBy: ["jwt"]
+    get:
+      description: |
+        Retrieve a <<resourcePathName|!singularize>> entity.
+      responses:
+        200:
+          description: |
+            The representation of a <<resourcePathName|!singularize>> entity.
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+    put:
+      description: |
+        Update a <<resourcePathName|!singularize>> entity.
+      responses:
+        200:
+          description: |
+            The representation of a <<resourcePathName|!singularize>> entity.
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+  reader:
+    description: 
+    get:
+      description: |
+        Retrieve a list of <<resourcePathName>>.
+      responses:
+        200:
+          description: |
+            List of <<resourcePathName>>.
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+types:
+   error: !include schemas/error.json
+securitySchemes: 
+   jwt: !include security/jwt.yml
+
+/auth:
+  /register:
+    post:
+      description: Register user in the system
+      body:
+        application/json:
+          type: !include schemas/auth/register/request.json
+          example: !include examples/auth/register/request.json
+      responses:
+        200:
+          description: Account confirmed successfully!
+          body:
+            application/json:
+              type: !include schemas/auth/register/response.json
+              example: !include examples/auth/register/response.json
+  /account/confirm:
+    post:
+      description: |
+        Confirm the account of the new user registered
+        Allowed roles: Guest.
+      body:
+        application/json:
+          type: !include schemas/auth/confirm-account/request.json
+          example: !include examples/auth/confirm-account/request.json
+      responses:
+        200:
+          description: |
+            Account confirmed successfully!
+          body:
+            application/json:
+              type: !include schemas/auth/confirm-account/response.json
+              example: !include examples/auth/confirm-account/response.json
+  /login:
+    post:
+      description: |
+        Proceed a user authentication in order to get  an access token for secured requests.
+        Allowed roles: Guest.
+      body:
+        application/json:
+          type: !include schemas/auth/login/request.json
+          example: !include examples/auth/login/request.json
+      responses:
+        200:
+          description: |
+            The user has been authenticated.
+          body:
+            application/json:
+              type: !include schemas/auth/login/response.json
+              example: !include examples/auth/login/response.json 
+  /password/forgot:
+    post:
+      description: |
+        Ask for password resetting
+        Allowed roles: Guest.
+      body:
+        application/json:
+          type: !include schemas/auth/forgot-password/request.json
+          example: !include examples/auth/forgot-password/request.json
+      responses:
+        200:
+          description: |
+            Email containing the reset link sent successfully
+          body:
+            application/json:
+              type: !include schemas/auth/forgot-password/response.json
+              example: !include examples/auth/forgot-password/response.json 
+  /password/reset:
+    post:
+      description: |
+        Reset the password of the user
+        Allowed roles: Guest.
+      body:
+        application/json:
+          type: !include schemas/auth/reset-password/request.json
+          example: !include examples/auth/reset-password/request.json
+      responses:
+        200:
+          description: |
+            The password resetted successfully
+          body:
+            application/json:
+              type: !include schemas/auth/reset-password/response.json
+              example: !include examples/auth/reset-password/response.json
+/users:
+  get:
+    description: |
+      Retrieve a list of users.
+    is: ["paged"]
+    securedBy: ["jwt"]
+    responses:
+      200:
+        description: |
+          A list of users.
+        body:
+          application/json:
+            type: !include schemas/users/get-all/response.json
+            example: !include examples/users/get-all/response.json
+      400: !include schemas/errors/400.yml
+      403: !include schemas/errors/403.yml
+      404: !include schemas/errors/404.yml
+      422: !include schemas/errors/422.yml
+      500: !include schemas/errors/500.yml
+  /{id}:
+    put:
+      description: |
+        Update user info.
+        Allowed roles: Member (owner).
+      securedBy: ["jwt"]
+      body:
+        application/json:
+          type: !include schemas/users/update/request.json
+          example: !include examples/users/update/request.json
+      responses:
+        200:
+          description: |
+            The user info have been updated.
+          body:
+            application/json:
+              type: !include schemas/users/update/response.json
+              example: !include examples/users/update/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+    get:
+      description: |
+        Retrieve a given user.
+        Allowed roles: Member (Owner).
+      securedBy: ["jwt"]
+      responses:
+        200:
+          description: |
+            The user.
+          body:
+            application/json:
+              type: !include schemas/users/get-one/response.json
+              example: !include examples/users/get-one/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+    delete:
+      description: |
+        Delete a given user.
+        Allowed roles: Member (Owner).
+      securedBy: ["jwt"]
+      responses:
+        200:
+          description: |
+            The user.
+          body:
+            application/json:
+              type: !include schemas/users/delete/response.json
+              example: !include examples/users/delete/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+  /password:
+    put:
+      description: |
+        Update user password.
+        Allowed roles: Member (owner).
+      securedBy: ["jwt"]
+      body:
+        application/json:
+          type: !include schemas/users/update-password/request.json
+          example: !include examples/users/update-password/request.json
+      responses:
+        200:
+          description: |
+            The user password have been updated.
+          body:
+            application/json:
+              type: !include schemas/users/update-password/response.json
+              example: !include examples/users/update-password/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+  /me:
+    get:
+      description: |
+        Retrieve authenticated user.
+        Allowed roles: Member (Owner).
+      securedBy: ["jwt"]
+      responses:
+        200:
+          description: |
+            Authenticated user retrieved successfully.
+          body:
+            application/json:
+              type: !include schemas/users/get-one/response.json
+              example: !include examples/users/get-one/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+/tasks:
+  get:
+    description: |
+      Retrieve a list of tasks.
+    is: ["paged"]
+    securedBy: ["jwt"]
+    responses:
+      200:
+        description: |
+          A list of tasks.
+        body:
+          application/json:
+            type: !include schemas/tasks/get-all/response.json
+            example: !include examples/tasks/get-all/response.json
+      400: !include schemas/errors/400.yml
+      403: !include schemas/errors/403.yml
+      404: !include schemas/errors/404.yml
+      422: !include schemas/errors/422.yml
+      500: !include schemas/errors/500.yml
+  /create:
+    post:
+      description: Create a new task
+      securedBy: ["jwt"]
+      body:
+        application/json:
+          type: !include schemas/tasks/create/request.json
+          example: !include examples/tasks/create/request.json
+      responses:
+        200:
+          description: The task created successfully!
+          body:
+            application/json:
+              type: !include schemas/tasks/create/response.json
+              example: !include examples/tasks/create/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+  /{id}:
+    put:
+      description: Update a task
+      securedBy: ["jwt"]
+      body:
+        application/json:
+          type: !include schemas/tasks/update/request.json
+          example: !include examples/tasks/update/request.json
+      responses:
+        200:
+          description: The task upated successfully!
+          body:
+            application/json:
+              type: !include schemas/tasks/create/response.json
+              example: !include examples/tasks/create/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+    delete:
+      description: Delete a task
+      securedBy: ["jwt"]
+      responses:
+        200:
+          description: The task deleted successfully!
+          body:
+            application/json:
+              type: !include schemas/tasks/delete/response.json
+              example: !include examples/tasks/delete/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml
+    get:
+      description: Get one task
+      securedBy: ["jwt"]
+      responses:
+        200:
+          description: The task fetched successfully!
+          body:
+            application/json:
+              type: !include schemas/tasks/create/response.json
+              example: !include examples/tasks/create/response.json
+        400: !include schemas/errors/400.yml
+        403: !include schemas/errors/403.yml
+        404: !include schemas/errors/404.yml
+        422: !include schemas/errors/422.yml
+        500: !include schemas/errors/500.yml

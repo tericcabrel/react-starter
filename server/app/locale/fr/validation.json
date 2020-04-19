@@ -1,0 +1,11 @@
+{
+  "input.required": "La valeur est obligatoire",
+  "input.empty": "La valeur ne peut pas être vide",
+  "email.invalid": "L'adresse email est invalide",
+  "input.taken": "La valeur est déjà prise",
+  "min.length": "La valeur doit avoir {valeur} caractère(s) ou plus",
+  "password.match": "Le mot de passe actuel ne correspond pas",
+  "max.length": "La valeur ne peut pas avoir plus de {value} caractère (s)",
+  "input.date.invalid": "Le format de date est invalide ! Doit être YYYY-MM-DD hh:mm:ss",
+  "user.not.exist": "Aucun utilisateur trouvé avec l'ID fourni"
+}

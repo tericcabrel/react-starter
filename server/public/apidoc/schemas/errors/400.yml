@@ -1,0 +1,9 @@
+description: |
+  The request completion failed. The description should provide detailed explanation of the reason.
+body:
+  application/json:
+    schema: !include ../error.json
+    example: |
+      {
+        "message": "Invalid object ID."
+      }

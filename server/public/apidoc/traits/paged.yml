@@ -1,0 +1,14 @@
+queryParameters:
+  before:
+    description: |
+      The value of the before cursor.
+    type: string
+  after:
+    description: |
+      The value of the after cursor.
+    type: string
+  limit:
+    description: |
+      Maximum number of item in the result set.
+    type: integer
+    default: 10

@@ -1,0 +1,11 @@
+description: The request is forbidden due to missing  permissions.
+body:
+  application/json:
+    schema: !include ../error-422.json
+    example: |
+      {
+        "errors": {
+          "name": ["This field is required!", "The name should have at least 3 characters"],
+          "email": ["This field is not valid!"]
+        }
+      }

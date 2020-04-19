@@ -1,0 +1,75 @@
+.profile-content {
+  min-height: 600px;
+  background-color: #ffffff;
+  padding: 15px;
+  .profile-header {
+    background-size: cover;
+    background: url("../../../assets/images/bg-profile/1.jpg") no-repeat;
+    height: 200px;
+    width: 100%;
+  }
+  .profile-body {
+    width: 100%;
+    .profile-section {
+      min-height: 300px;
+      padding: 15px;
+    }
+    .profile-section-1 {
+      width: 30%;
+      position: relative;
+      box-shadow: 5px 0 5px -5px #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      .img-profile {
+        position: absolute;
+        top: -70px;
+        width: 128px;
+        left: calc(50% - 64px);
+      }
+      .social-network {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        a {
+          text-decoration: none;
+          color: #333;
+          .social-icon {
+            width: 2em;
+            height: 2em;
+          }
+        }
+      }
+    }
+    .profile-section-2 {
+      width: 70%;
+      fieldset {
+        border-bottom: 1px #ddd solid;
+        margin-bottom: 10px;
+        legend {
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+      p.about-me {
+        font-size: 14px;
+        text-align: justify;
+      }
+      .table-user-info {
+        border-top: none;
+        tr {
+          border: none;
+          td {
+            border: none;
+            padding: 0.25rem;
+            font-size: 14px;
+          }
+          td:last-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

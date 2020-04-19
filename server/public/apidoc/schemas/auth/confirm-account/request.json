@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost/api-doc/schemas/",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "description": "Token to validate the account of an user"
+    }
+  },
+  "required": ["token"]
+}

@@ -1,0 +1,12 @@
+.app-layout {
+  display: flex;
+  .app-layout-body {
+    margin-top: 50px;
+    min-height: 550px;
+    width: 100%;
+    margin-left: 240px;
+    .main {
+      padding: 15px;
+    }
+  }
+}
