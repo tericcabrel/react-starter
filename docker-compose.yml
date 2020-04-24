@@ -19,7 +19,7 @@ services:
     container_name: mern-starter-db
     image: mongo
     volumes:
-      - ${ENV_FOLDER}/dist/db:/data/db
+      - ${ENV_FOLDER}/db:/data/db
     ports:
       - "27000:27017"
     env_file: ./mongo.env
