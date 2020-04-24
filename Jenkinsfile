@@ -12,7 +12,7 @@ pipeline {
             agent {
                 docker {
                     image 'mhart/alpine-node:10.16.3'
-                    args  '-v ${ENV_FOLDER}/dist:/home'
+                    args  '-v ${ENV_FOLDER}:/home'
                 }
             }
             steps {
@@ -37,7 +37,7 @@ pipeline {
                 // Mark build as failed
                 // currentBuild.result = "FAILURE";
 
-                def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} FAILURE"
+                /*def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} FAILURE"
                 def content = '${JELLY_SCRIPT,template="html"}'
 
                 // Send email
@@ -50,7 +50,7 @@ pipeline {
                         to: to,
                         attachLog: true
                     )
-                }
+                }*/
             }
         }
 
@@ -63,7 +63,7 @@ pipeline {
                     echo "Fail to complete all the stages"
 
                     // Mark current build as a failure and throw the error
-                    throw e;
+                    // throw e;
                 }
             }
         }
