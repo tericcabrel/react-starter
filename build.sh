@@ -1,16 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 SERVER_BUILD='./server/build'
 CLIENT_BUILD_IN_SERVER='./server/client'
 CLIENT_BUILD='./client/build'
 
-if [[ -d ${SERVER_BUILD} ]]; then
+if [ -d ${SERVER_BUILD} ]; then
     rm -rf ${SERVER_BUILD}
 fi
-if [[ -d ${CLIENT_BUILD} ]]; then
+if [ -d ${CLIENT_BUILD} ]; then
     rm -rf ${CLIENT_BUILD}
 fi
-if [[ -d ${CLIENT_BUILD_IN_SERVER} ]]; then
+if [ -d ${CLIENT_BUILD_IN_SERVER} ]; then
     rm -rf ${CLIENT_BUILD_IN_SERVER}
 fi
 
@@ -24,6 +24,7 @@ yarn
 
 # Copy the folders who was not moved during the Typescript compilation
 cp -rf ./app/locale ./build
+mkdir /build/core/mailer
 cp -rf ./app/core/mailer/templates ./build/core/mailer
 
 cd ../client
