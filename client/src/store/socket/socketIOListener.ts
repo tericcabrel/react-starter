@@ -1,4 +1,5 @@
 import { Store } from 'redux';
+import { Socket } from 'socket.io-client';
 
 import { ApplicationError } from '../../types/common';
 import { Country } from '../../types/model';
@@ -12,7 +13,7 @@ import { parseSocketResponseMessage } from '../../utils/helpers';
 import { SOCKET_RESPONSE_EVENT } from '../../utils/constants';
 
 const socketConfigure: ConfigureSocketFn = (
-  socket: SocketIOClient.Socket,
+  socket: Socket,
   store: Store<RootState, ReduxAction>,
   trySocketConnect: () => void
 ): void => {

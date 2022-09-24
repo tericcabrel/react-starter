@@ -14,7 +14,7 @@ import AuthError from '../../AuthError';
 
 import './form-forgot-password.scss';
 
-const FormForgotPasswordSchema: Yup.ObjectSchema = Yup.object().shape({
+const FormForgotPasswordSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid address email!')
     .required('Required')

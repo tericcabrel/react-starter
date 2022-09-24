@@ -48,7 +48,7 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
 });
 
 // tslint:disable-next-line:variable-name
-const UserModel: MongooseModel<Document, {}> = mongoose.model('User', userSchema);
+const UserModel: MongooseModel<Document, {}> = mongoose.model<Document>('User', userSchema);
 
 const userUpdateParams: string[] = [
 	'name',

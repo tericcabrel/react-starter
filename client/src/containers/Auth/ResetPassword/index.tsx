@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { Col, Row, Spinner } from 'reactstrap';
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl';
-import { parse, ParsedUrlQuery } from 'querystring';
+import { parse, ParsedQuery } from 'query-string';
 import { toast } from 'react-toastify';
 
 import { AuthState, ResetPasswordData, RootState } from '../../../types/redux';
@@ -34,7 +34,7 @@ const ResetPassword: FC<{}> = (): ReactElement => {
   const [resetToken, setResetToken]: [string|null, Function] = useState(null);
 
   useEffect((): void => {
-    const query: ParsedUrlQuery = parse(search.substring(1));
+    const query: ParsedQuery = parse(search.substring(1));
 
     setResetToken(query.token as string);
   },        [search]);

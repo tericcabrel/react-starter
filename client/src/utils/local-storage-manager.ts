@@ -113,7 +113,7 @@ class LocalStorageManager {
         return JSON.parse(user);
       }
     } catch (e) {
-      console.log('User Data Parsing Error => ', e.toString());
+      console.log('User Data Parsing Error => ', e);
     }
 
     return null;

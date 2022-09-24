@@ -1,5 +1,5 @@
-import joi from '@hapi/joi';
-import axios, { AxiosResponse } from 'axios';
+import joi from 'joi';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 
 import { SocketSession, SocketSessionItem } from '../../core/types/socket';
 import { SOCKET_RESPONSE_EVENT } from '../events';
@@ -14,7 +14,7 @@ class GetCountryTask {
 	static async run(socketSessions: SocketSession, socketSessionId: string, data: any): Promise<void> {
 		const sessionItem: SocketSessionItem | undefined = socketSessions[socketSessionId];
 
-		const joiValidation: joi.ValidationResult<joi.ObjectSchema> = SocketTask.validateWithDefaultSchema(
+		const joiValidation: joi.ValidationResult = SocketTask.validateWithDefaultSchema(
 			data,
 			GetCountryTask.schema,
 		);
@@ -37,7 +37,7 @@ class GetCountryTask {
 			}
 		} catch (e) {
 			if (sessionItem !== undefined) {
-				sessionItem.socket.emit(SOCKET_RESPONSE_EVENT, JSON.stringify({ error: e.response.data }));
+				sessionItem.socket.emit(SOCKET_RESPONSE_EVENT, JSON.stringify({ error: (e as AxiosError).response?.data }));
 			}
 		}
 	}

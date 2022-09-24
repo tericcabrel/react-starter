@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component, PropsWithChildren} from 'react';
 
 interface IState {
   errorOccurred: boolean;
 }
 
-interface IProps {
+interface IProps { }
 
-}
-
-class ErrorHandler extends Component<IProps, IState> {
+class ErrorHandler extends Component<PropsWithChildren<IProps>, IState> {
   state: IState;
 
   constructor(props: IProps) {

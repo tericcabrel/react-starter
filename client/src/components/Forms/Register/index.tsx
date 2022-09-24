@@ -14,7 +14,7 @@ import CustomInputPassword from '../../../components/CustomInputPassword';
 
 import './form-register.scss';
 
-const FormRegisterSchema: Yup.ObjectSchema = Yup.object().shape({
+const FormRegisterSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid address email!')
     .required('Required'),

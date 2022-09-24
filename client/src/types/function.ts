@@ -1,4 +1,6 @@
 import { Store } from 'redux';
+import { Socket } from 'socket.io-client';
+
 import {
   ConfirmAccountData,
   ForgotPasswordData,
@@ -13,7 +15,7 @@ import { Country } from './model';
 
 export type ConfigureStoreFn = (initialState?: RootState) => Store<RootState, ReduxAction>;
 export type ConfigureSocketFn = (
-  socket: SocketIOClient.Socket, store: Store<RootState, ReduxAction>, trySocketConnect: () => void
+  socket: Socket, store: Store<RootState, ReduxAction>, trySocketConnect: () => void
 ) => void;
 
 export type VoidActionFn = () => ReduxAction;

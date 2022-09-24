@@ -15,10 +15,12 @@ export const uploadAvatar = multer({
 	fileFilter(req, file, callback) {
 		const extension: boolean = ['.png', '.jpg', '.jpeg'].indexOf(path.extname(file.originalname).toLowerCase()) >= 0;
 		const mimeType: boolean = file.mimetype.indexOf('image') > 0;
+
 		if (extension && mimeType) {
 			return callback(null, true);
 		}
-		callback(new Error('Invalid file type. Only pictures are allowed !'), false);
+
+		callback(new Error('Invalid file type. Only pictures are allowed !'));
 	},
 }).single('picture');
 

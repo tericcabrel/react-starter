@@ -3,7 +3,7 @@ import { Button, Col, Form, FormGroup, Input, Row } from 'reactstrap';
 import { Dispatch } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { IntlShape, useIntl } from 'react-intl';
-import FormattedMessage from 'react-intl/lib/components/message';
+import { FormattedMessage } from 'react-intl';
 
 import { FilteredCountry } from '../../../types/model';
 import { AppState, RootState } from '../../../types/redux';

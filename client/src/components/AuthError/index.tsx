@@ -4,7 +4,7 @@ import { Alert } from 'reactstrap';
 import './auth-error.scss';
 
 export interface IAuthErrorProps {
-  error: object | null;
+  error: any;
 }
 
 const AuthError: FC<IAuthErrorProps> = ({ error }: IAuthErrorProps): ReactElement => {

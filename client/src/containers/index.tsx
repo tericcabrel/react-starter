@@ -53,13 +53,13 @@ const App: React.FC<IAppProps> = ({ messages }: IAppProps): React.ReactElement =
       <LocaleProvider messages={messages}>
         <BrowserRouter>
           <Switch>
-            <Route exact={true} path="/" name="Login Page" component={Login} />
-            <Route exact={true} path="/register" name="Register Page" component={Register} />
-            <Route exact={true} path="/password/forgot" name="Forgot password Page" component={ForgotPassword} />
-            <Route exact={true} path="/password/reset" name="Reset password Page" component={ResetPassword} />
-            <Route exact={true} path="/account/confirm" name="Confirm account Page" component={ConfirmAccount} />
-            <Route path="/app" name="Home" component={Layout} />
-            <Route name="Page 404" component={NotFound} />
+            <Route exact={true} path="/" component={Login} />
+            <Route exact={true} path="/register" component={Register} />
+            <Route exact={true} path="/password/forgot" component={ForgotPassword} />
+            <Route exact={true} path="/password/reset" component={ResetPassword} />
+            <Route exact={true} path="/account/confirm" component={ConfirmAccount} />
+            <Route path="/app" component={Layout} />
+            <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
       </LocaleProvider>

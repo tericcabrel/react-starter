@@ -2,7 +2,7 @@ import * as nodemailer from 'nodemailer';
 import * as path from 'path';
 import * as fs from 'fs';
 import handlebars from 'handlebars';
-import * as Mail from 'nodemailer/lib/mailer';
+import Mail from 'nodemailer/lib/mailer';
 
 import * as config from '../config';
 import { logger } from '../logger';

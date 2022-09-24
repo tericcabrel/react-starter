@@ -11,7 +11,7 @@ import AuthError from '../../AuthError';
 
 import './form-reset-password.scss';
 
-const FormResetPasswordSchema: Yup.ObjectSchema = Yup.object().shape({
+const FormResetPasswordSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Must be at least 6 characters!')
     .required('Required'),

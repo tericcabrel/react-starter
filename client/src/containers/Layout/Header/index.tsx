@@ -7,7 +7,7 @@ import {
   Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, Navbar, NavbarBrand, NavbarToggler, UncontrolledDropdown
 } from 'reactstrap';
 import { FaSignOutAlt, FaUserAlt, FaCog } from 'react-icons/fa';
-import FormattedMessage from 'react-intl/lib/components/message';
+import { FormattedMessage } from 'react-intl';
 
 import { logoutUserAction } from '../../../store/app/actions';
 

@@ -6,6 +6,7 @@ import { SocketRequestAction, SOCKET_REQUEST_EVENT } from './events';
 
 // Socket tasks
 import { GetCountryTask } from './tasks/get-country.task';
+import { WEB_APP_URL } from '../core/config';
 
 class SocketManager {
 	static sessions: SocketSession = { };
@@ -16,33 +17,38 @@ class SocketManager {
 	 * @return void
 	 */
 	static init(server: http.Server): void {
-	const io: socketIo.Server = socketIo.listen(server, { pingTimeout: 700000 });
-
-	io.sockets.on('connection', async (socket: socketIo.Socket) => {
-		const socketSessionId: string = SocketManager.createSession(socket);
-
-		socket.on(SOCKET_REQUEST_EVENT, (dataString: string) => {
-			const data: any = JSON.parse(dataString);
-
-			console.log('[Received]: %s', dataString);
-
-			switch (data.rqid) {
-				case SocketRequestAction.GET_COUNTRY_INFO_REQUEST:
-					GetCountryTask.run(SocketManager.sessions, socketSessionId, data);
-					break;
-				default:
-					console.log('The socket action doesn\'t exist!');
-					break;
-			}
+		const io: socketIo.Server =  new socketIo.Server(server, {
+			pingTimeout: 700000,
+			cors: {
+				origin: [WEB_APP_URL]
+			},
 		});
 
-		socket.on('disconnect', () => {
-			socket.disconnect(true);
-			SocketManager.deleteSession(socketSessionId);
-			console.log('Client disconnected');
+		io.sockets.on('connection', async (socket: socketIo.Socket) => {
+			const socketSessionId: string = SocketManager.createSession(socket);
+
+			socket.on(SOCKET_REQUEST_EVENT, (dataString: string) => {
+				const data: any = JSON.parse(dataString);
+
+				console.log('[Received]: %s', dataString);
+
+				switch (data.rqid) {
+					case SocketRequestAction.GET_COUNTRY_INFO_REQUEST:
+						GetCountryTask.run(SocketManager.sessions, socketSessionId, data);
+						break;
+					default:
+						console.log('The socket action doesn\'t exist!');
+						break;
+				}
+			});
+
+			socket.on('disconnect', () => {
+				socket.disconnect(true);
+				SocketManager.deleteSession(socketSessionId);
+				console.log('Client disconnected');
+			});
 		});
-	});
-}
+	}
 
 	/**
 	 * Create a socket's session for the user connected

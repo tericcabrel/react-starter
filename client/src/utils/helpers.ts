@@ -22,11 +22,11 @@ export const parseSocketResponseMessage: Function = (message: string): SocketRes
 
     return object;
   } catch (e) {
-    console.log('Response Parsing Error Message => ', e.toString());
+    console.log('Response Parsing Error Message => ', e);
 
     return {
       errorType: 'Socket Response Parsing Error ',
-      message: { details: [e.toString()], response: [message] }
+      message: { details: [e as any], response: [message] }
     };
   }
 };

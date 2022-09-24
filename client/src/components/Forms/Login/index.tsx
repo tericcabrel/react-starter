@@ -15,7 +15,7 @@ import AuthError from '../../AuthError';
 
 import './form-login.scss';
 
-const FormLoginSchema: Yup.ObjectSchema = Yup.object().shape({
+const FormLoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid address email!')
     .required('Required'),

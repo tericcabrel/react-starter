@@ -1,16 +1,16 @@
-import joi from '@hapi/joi';
+import joi from 'joi';
 
 class SocketTask {
-	 static validateWithDefaultSchema(data: any, joiSchema: joi.ObjectSchema): joi.ValidationResult<joi.ObjectSchema> {
+	 static validateWithDefaultSchema(data: any, joiSchema: joi.ObjectSchema): joi.ValidationResult {
 	 	const finalSchema: joi.ObjectSchema = joiSchema.keys({
 			rqid: joi.string().required(),
 		});
 
-		return joi.validate(data, finalSchema);
+		return finalSchema.validate(data);
 	}
 
-	 static validateWithoutDefaultSchema(data: any, joiSchema: joi.Schema): joi.ValidationResult<joi.ObjectSchema> {
-		return joi.validate(data, joiSchema);
+	 static validateWithoutDefaultSchema(data: any, joiSchema: joi.Schema): joi.ValidationResult {
+		return joiSchema.validate(data);
 	}
 }
 

@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, Suspense } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { IoLogoGithub, IoLogoFacebook, IoLogoLinkedin, IoLogoTwitter, IoMdCreate } from 'react-icons/io';
-import FormattedMessage from 'react-intl/lib/components/message';
+import { FormattedMessage } from 'react-intl';
 
 import withApp from '../../../hofs/withApp';
 

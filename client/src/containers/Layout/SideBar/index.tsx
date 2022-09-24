@@ -3,7 +3,7 @@ import { Location } from 'history';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Nav, NavItem, NavLink as BSNavLink } from 'reactstrap';
 import { FaTachometerAlt, FaTasks, FaUserAlt, FaCog, FaListUl, FaPlus, FaAngleRight } from 'react-icons/fa';
-import FormattedMessage from 'react-intl/lib/components/message';
+import { FormattedMessage } from 'react-intl';
 
 import './side-bar.scss';
 

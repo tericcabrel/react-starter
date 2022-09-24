@@ -5,10 +5,10 @@ import { FormattedMessage } from 'react-intl';
 import LocaleContext, { LocaleContextType } from '../../containers/LocaleProvider/locale-context';
 import messages from '../../translations/messages';
 
-const flag_fr: any = require('../../assets/icons/flags/fr.svg');
-const flag_en: any = require('../../assets/icons/flags/en.svg');
-const flag_de: any = require('../../assets/icons/flags/de.svg');
-const flag_es: any = require('../../assets/icons/flags/es.svg');
+import flag_fr from '../../assets/icons/flags/fr.svg';
+import flag_en from '../../assets/icons/flags/en.svg';
+import flag_de from '../../assets/icons/flags/de.svg';
+import flag_es from '../../assets/icons/flags/es.svg';
 
 const flags: { [key: string]: any } = { flag_fr, flag_en, flag_de, flag_es };
 
@@ -18,6 +18,8 @@ const renderLocaleDropdownItem: (context: LocaleContextType) => ReactElement[] =
   const localeDropdownContent: ReactElement[] = [];
 
   for (const localeKey in context.locales) {
+    const lang = context.locales[localeKey];
+
     localeDropdownContent.push((
       <DropdownItem
         key={localeKey}
@@ -25,7 +27,7 @@ const renderLocaleDropdownItem: (context: LocaleContextType) => ReactElement[] =
         style={{ display: 'flex', alignItems: 'center' }}
       >
         <img alt="" src={flags[`flag_${localeKey}`]} style={{ width: 24, height: 16, marginRight: 10 }}/>
-        {<FormattedMessage {...messages[context.locales[localeKey]]} />}
+        {<FormattedMessage {...messages[lang]} />}
       </DropdownItem>
     ));
   }

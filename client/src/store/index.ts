@@ -3,7 +3,7 @@ import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 // @ts-ignore
 import dynamicMiddlewares, { addMiddleware } from 'redux-dynamic-middlewares';
-import io from 'socket.io-client';
+import { io, Socket } from 'socket.io-client';
 
 // Redux socket utilities
 import socketIOEmitterMiddleware from './socket/socketIOEmitter';
@@ -26,7 +26,7 @@ const socketUrl: string|undefined = process.env.REACT_APP_SOCKET_URL;
 const socketPath: string|undefined = process.env.REACT_APP_SOCKET_PATH;
 
 // combined reducers
-const reducers: Reducer<RootState | undefined> = combineReducers<RootState | undefined>({
+const reducers: Reducer<RootState | {}> = combineReducers<RootState | {}>({
   auth: AuthReducer,
   app: AppReducer,
   socket: SocketReducer,
@@ -50,15 +50,15 @@ export const configureStore: ConfigureStoreFn = (initialState?: RootState): Stor
   );
 
   // Configure socket
-  let socket: SocketIOClient.Socket;
+  let socket: Socket;
 
   const trySocketConnect: () => void = (): void => {
     if (socket) socket.close();
 
     if (!socketPath) {
-      socket = io.connect(`${socketUrl}`);
+      socket = io(`${socketUrl}`);
     } else {
-      socket = io.connect(`${socketUrl}`, { path: socketPath });
+      socket = io(`${socketUrl}`, { path: socketPath });
     }
     socketIOListener(socket, store, trySocketConnect);
 

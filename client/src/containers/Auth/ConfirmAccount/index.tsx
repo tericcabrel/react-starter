@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { Alert, Col, Row, Spinner } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import { parse, ParsedUrlQuery } from 'querystring';
+import { parse, ParsedQuery } from 'query-string';
 
 import { AuthState, RootState } from '../../../types/redux';
 import { resetAuthStateAction, confirmAccountAction } from '../../../store/auth/actions';
@@ -37,7 +37,7 @@ const ConfirmAccount: FC<{}> = (): ReactElement => {
   const authState: AuthState = useSelector((state: RootState): AuthState => state.auth);
 
   useEffect((): void => {
-    const query: ParsedUrlQuery = parse(search.substring(1));
+    const query: ParsedQuery = parse(search.substring(1));
     // console.log(query);
 
     dispatch(confirmAccountAction({ token: query.token as string }));

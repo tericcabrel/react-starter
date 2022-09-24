@@ -32,7 +32,7 @@ class Routes {
 		// Express middleware
 		app.use(bodyParser.urlencoded({ extended: true }));
 		app.use(bodyParser.json());
-		app.use(cookieParser());
+		// app.use(cookieParser());
 		// app.use(helmet());
 		// app.use(helmet.noSniff());
 		app.use(cors());

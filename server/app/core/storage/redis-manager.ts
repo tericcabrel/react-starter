@@ -1,13 +1,13 @@
-import redis, { RedisClient } from 'redis';
+import redis from 'redis';
 
 import * as config from '../config';
 
 class RedisManager {
-	private static client: RedisClient;
+	private static client: any;
 
-	public static getInstance(): RedisClient {
+	public static getInstance() {
 		if (!RedisManager.client) {
-			RedisManager.client = redis.createClient(config.REDIS_PORT, config.REDIS_HOST);
+			RedisManager.client = redis.createClient({ url: `redis://${config.REDIS_HOST}:${config.REDIS_PORT}` });
 		}
 
 		return RedisManager.client;

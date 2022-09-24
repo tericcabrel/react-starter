@@ -39,7 +39,7 @@ const TaskSchema: Schema = new Schema({
 });
 
 // tslint:disable-next-line:variable-name
-const TaskModel: Model<Document> = mongoose.model('Task', TaskSchema);
+const TaskModel: Model<Document> = mongoose.model<Document>('Task', TaskSchema);
 
 const taskUpdateParams: string[] = [
 	'title',

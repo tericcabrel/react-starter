@@ -33,13 +33,13 @@ export const createJwtToken: CreateJWTTokenFunction = (payload: any, jwtSecret: 
  */
 export const decodeJwtToken : Function = (token: string, jwtSecret: string): Promise<any> => {
 	return new Promise((resolve: Function, reject: Function): void => {
-		jwt.verify(token, jwtSecret, (err: jwt.VerifyErrors, decoded: any) => {
-			if (err) {
-				return reject(err);
-			}
+		try {
+			const decoded = jwt.verify(token, jwtSecret);
 
-			return resolve(decoded);
-		});
+			return resolve(decoded)
+		} catch(err) {
+			return reject(err);
+		}
 	});
 };
 

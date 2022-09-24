@@ -1,6 +1,6 @@
 import React, { FC, Fragment, ReactElement } from 'react';
 import { IntlShape } from 'react-intl';
-import FormattedMessage from 'react-intl/lib/components/message';
+import { FormattedMessage } from 'react-intl';
 
 import { Country } from '../../types/model';
 

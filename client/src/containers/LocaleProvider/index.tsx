@@ -35,7 +35,7 @@ const LocaleProvider: FC<ILocaleProviderProps> = ({ messages, children }: ILocal
   return (
     <LocaleContext.Provider value={{ changeLocale, locale: data.locale, locales: data.locales }}>
       <IntlProvider locale={data.locale} key={data.locale} messages={messages[data.locale]}>
-        {React.Children.only(children)}
+        {children}
       </IntlProvider>
     </LocaleContext.Provider>
   );

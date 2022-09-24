@@ -131,7 +131,7 @@ export default {
 					check('token').not().isEmpty().withMessage(() => { return Locale.trans('input.empty'); }),
 					check('uid')
 						.custom(async (value: any, { req }: any) => {
-							const user: Document|null = await UserModel.findOne({ _id: mongoose.Types.ObjectId(req.body.uid) });
+							const user: Document|null = await UserModel.findOne({ _id: new mongoose.Types.ObjectId(req.body.uid) });
 
 							if (!user) {
 								throw new Error(Locale.trans('user.test.ts.not.exist'));
