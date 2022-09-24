@@ -7,8 +7,8 @@ import { FormattedMessage } from 'react-intl';
 
 import './side-bar.scss';
 
-const logo: any = require('../../../assets/icons/logo.svg');
-const avatar: any = require('../../../assets/images/avatar.png');
+import logo from '../../../assets/icons/logo.svg';
+import avatar from '../../../assets/images/avatar.png';
 
 const Sidebar: FC<{}> = (): ReactElement => {
   const { pathname }: Location = useLocation();

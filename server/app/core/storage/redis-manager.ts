@@ -1,30 +1,23 @@
-import redis from 'redis';
+import {createClient, RedisClientType} from 'redis';
 
-import * as config from '../config';
+import { REDIS_HOST, REDIS_PORT } from '../config';
 
 class RedisManager {
-	private static client: any;
+	private static client: RedisClientType;
 
-	public static getInstance() {
+	public static async init() {
 		if (!RedisManager.client) {
-			RedisManager.client = redis.createClient({ url: `redis://${config.REDIS_HOST}:${config.REDIS_PORT}` });
-		}
+			RedisManager.client = createClient({ url: `redis://${REDIS_HOST}:${REDIS_PORT}` });
 
-		return RedisManager.client;
+			await RedisManager.client.connect();
+		}
 	}
 
 	public static get(key: string): Promise<string|null> {
-		return new Promise<string|null>((resolve: any, reject: any): void => {
-			RedisManager.getInstance().get(key, (error: Error|null, result: string) => {
-				if (error) {
-					reject(error);
-				}
-				resolve(result ? result : null);
-			});
-		});
+		return RedisManager.client.get(key);
 	}
 
-	public static async set(key: string, value: string, expire: number = -1): Promise<boolean> {
+	public static async set(key: string, value: string, expire: number = -1): Promise<string | null> {
 		if (expire > 0) {
 			return await RedisManager.setWithExpire(key, value, expire);
 		}
@@ -32,59 +25,24 @@ class RedisManager {
 		return await RedisManager.setWithoutExpire(key, value);
 	}
 
-	private static setWithExpire(key: string, value: string, expire: number): Promise<boolean> {
-		return new Promise((resolve: any, reject: any): any => {
-			RedisManager.getInstance().setex(key, expire, value, (error: Error|null) => {
-				if (error) {
-					reject(error);
-				}
-				resolve(true);
-			});
-		});
+	private static setWithExpire(key: string, value: string, expire: number): Promise<string> {
+		return  RedisManager.client.setEx(key, expire, value);
 	}
 
-	private static setWithoutExpire(key: string, value: string): Promise<boolean> {
-		return new Promise((resolve: any, reject: any): any => {
-			RedisManager.getInstance().set(key, value, (error: Error|null) => {
-				if (error) {
-					reject(error);
-				}
-				resolve(true);
-			});
-		});
+	private static setWithoutExpire(key: string, value: string): Promise<string | null> {
+		return RedisManager.client.set(key, value);
 	}
 
-	public static delete(key: string): Promise<boolean> {
-		return new Promise((resolve: any, reject: any): any => {
-			RedisManager.getInstance().del(key, (error: Error|null) => {
-				if (error) {
-					reject(error);
-				}
-				resolve(true);
-			});
-		});
+	public static delete(key: string): Promise<number> {
+		return RedisManager.client.del(key);
 	}
 
 	public static keys(pattern: string): Promise<string[]> {
-		return new Promise((resolve: any, reject: any): any => {
-			RedisManager.getInstance().keys(pattern, (error: Error|null, result: string[]) => {
-				if (error) {
-					reject(error);
-				}
-				resolve(result);
-			});
-		});
+		return RedisManager.client.keys(pattern);
 	}
 
-	public static getValues(keys: string[]): Promise<string[]> {
-		return new Promise((resolve: any, reject: any): any => {
-			RedisManager.getInstance().mget(keys, (error: Error|null, result: string[]) => {
-				if (error) {
-					reject(error);
-				}
-				resolve(result);
-			});
-		});
+	public static getValues(keys: string[]): Promise<Array<string | null>> {
+		return RedisManager.client.mGet(keys);
 	}
 }
 

@@ -7,6 +7,7 @@ import { SocketManager } from './socket';
 import { Locale } from './core/locale';
 import { logger } from './core/logger';
 import { dbConnection } from './core/db/connect';
+import {RedisManager} from './core/storage/redis-manager';
 
 const port: number = config.SERVER_PORT;
 
@@ -21,6 +22,8 @@ SocketManager.init(server);
 
 server.listen(port, async() => {
 	await dbConnection();
+
+	await RedisManager.init();
 
 	Locale.init();
 

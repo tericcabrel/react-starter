@@ -46,7 +46,7 @@ export const getAllCountriesAction: VoidActionFn = (): ReduxAction => {
     type: actionTypes.GET_ALL_COUNTRIES,
     async payload(): Promise<any> {
       try {
-        const res: AxiosResponse = await http.get(`${process.env.REACT_APP_REST_COUNTRY_BASE_URL}/all?fields=name;alpha2Code`);
+        const res: AxiosResponse = await http.get(`${process.env.REACT_APP_REST_COUNTRY_BASE_URL}/all?fields=name,alpha2Code`);
 
         return res.data;
       } catch (error) {

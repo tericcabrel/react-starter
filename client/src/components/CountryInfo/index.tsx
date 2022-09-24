@@ -149,7 +149,7 @@ const CountryTable: FC<CountryTableProps> = ({ country, intl }: CountryTableProp
             intl.formatMessage({ id: 'app.country.info.label.lang.name', defaultMessage: 'Name' }),
             intl.formatMessage({ id: 'app.country.info.label.lang.nname', defaultMessage: 'Native name' })
           ]}
-          values={country.languages}
+          values={country.languages ?? []}
         />
       </td>
       <td>
@@ -160,7 +160,7 @@ const CountryTable: FC<CountryTableProps> = ({ country, intl }: CountryTableProp
             intl.formatMessage({ id: 'app.country.info.label.currency.code', defaultMessage: 'Code' }),
             intl.formatMessage({ id: 'app.country.info.label.currency.symbol', defaultMessage: 'Symbol' })
           ]}
-          values={country.currencies}
+          values={country.currencies ?? []}
         />
       </td>
     </tr>
@@ -178,7 +178,7 @@ const CountryTable: FC<CountryTableProps> = ({ country, intl }: CountryTableProp
             intl.formatMessage(
               { id: 'app.country.info.label.region.other.name', defaultMessage: 'Others names' })
           ]}
-          values={country.regionalBlocs}
+          values={country.regionalBlocs ?? []}
         />
       </td>
       <td/>

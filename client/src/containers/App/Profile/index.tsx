@@ -9,7 +9,7 @@ import Loader from '../../../components/Loader';
 
 import './profile.scss';
 
-const avatar: any = require('../../../assets/images/avatar.png');
+import avatar from '../../../assets/images/avatar.png';
 
 const Profile : FC<{}> = (): ReactElement => {
   return (

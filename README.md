@@ -49,7 +49,7 @@ running on port 7430
     You need to set an environment variable for the current shell session named GOOGLE_APPLICATION_CREDENTIALS with the value of the path of your Google API credentials
 
 ### Demo
-URL: [http://react-starter.tericcabrel.com](http://react-starter.tericcabrel.com)
+URL: [https://react-starter.tericcabrel.com](https://react-starter.tericcabrel.com)
 <br/>
 Email address: demo@demo.com <br/>
 Password: 123456

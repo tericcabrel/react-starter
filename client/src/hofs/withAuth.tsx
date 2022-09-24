@@ -7,7 +7,7 @@ import ErrorHandler from '../components/ErrorHandler';
 // styles
 import './hofs.scss';
 
-const logo: any = require('../assets/icons/logo.svg');
+import logo from '../assets/icons/logo.svg';
 
 type WithAuthType = (component: FC<any>) => () => ReactElement;
 

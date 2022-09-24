@@ -36,6 +36,11 @@ cp -rf ./build ../server/client
 
 cd ../server/
 
-cp -r ./package.json /home
-cp -rf ./build /home
-cp -rf ./client /home
+cp .env.prod build/.env.prod
+
+# NODE_ENV=production pm2 start build/index.js --name=react-node
+
+# For docker
+# cp -r ./package.json /home
+# cp -rf ./build /home
+# cp -rf ./client /home

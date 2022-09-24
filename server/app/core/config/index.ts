@@ -45,7 +45,7 @@ const RESET_PASSWORD_PATH: string = e.RESET_PASSWORD_PATH || '';
 const CONFIRM_ACCOUNT_PATH: string = e.CONFIRM_ACCOUNT_PATH || '';
 const COUNTRY_REST_BASE_URL: string = e.COUNTRY_REST_BASE_URL || '';
 const REDIS_HOST: string = e.REDIS_HOST || 'localhost';
-const REDIS_PORT: number = parseInt(e.REDIS_HOST || '6379', 10);
+const REDIS_PORT: number = parseInt(e.REDIS_PORT || '6379', 10);
 
 export {
 	ENV, BASE_URL, SERVER_PORT, APP_NAME, APP_VERSION, API_BASE, DEFAULT_TIMEZONE, AUTH_ENABLED, JWT_SECRET, JWT_EXPIRE,

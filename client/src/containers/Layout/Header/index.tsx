@@ -15,7 +15,7 @@ import LocaleSelector from '../../../components/LocaleSelector';
 
 import './header.scss';
 
-const avatar: any = require('../../../assets/images/avatar.png');
+import avatar from '../../../assets/images/avatar.png';
 
 const Header: FC<{}> = (): ReactElement => {
   const dispatch: Dispatch = useDispatch();
