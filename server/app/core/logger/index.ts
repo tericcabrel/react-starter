@@ -46,7 +46,9 @@ const winstonLogger: Logger = createLogger({
 });
 
 const logger: EnhancedLogger = {
-	error: (error: unknown, toSentry = true) => {
+	error: (error: unknown) => {
+		console.log(error);
+
 		winstonLogger.error(logMessage(error));
 	},
 	info: (output: unknown) => winstonLogger.info(logMessage(output)),
