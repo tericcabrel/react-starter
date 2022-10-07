@@ -24,7 +24,7 @@ yarn
 
 # Copy the folders who was not moved during the Typescript compilation
 cp -rf ./app/locale ./build
-mkdir /build/core/mailer
+mkdir ./build/core/mailer
 cp -rf ./app/core/mailer/templates ./build/core/mailer
 
 cd ../client
